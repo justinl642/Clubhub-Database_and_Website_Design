@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <!-- We need to import JQUERY Library to make the api call-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="script.js"></script>
+   </head>
+  <body id="body" onload="init()">
+    <div id="banner" class="container center">
+      <h1> Lesson 51 Classwork - Filtering  </h1>
+    </div>
+    <div class="container subbanner">
+      <div>
+        <p>This webpage will allow a user to search for a employee by City.
+        </p>
+      </div>
+    </div>
+
+    <!-- Add the filter container add: textbox, button add CSS-->
+    <div class="container filter">
+      <div>
+        <h4> Search for Employee by City
+        </h4>
+<!--
+        Problem 1:
+        Add an ID and a placeholder for the textbox
+-->
+        <input style="flex:2;text-align:right;" type="text" id="" placeholder="" >       
+<!-- > &nbsp;  
+        Problem 2:
+        Add a event handler function "filter()", which will be 
+        called when the user clicks on the button. You will then 
+        need to write the function.
+-->
+        <a class="button" onclick=""> Search </a><br>
+      </div>
+    </div>
+    
+  <!-- Create a container to display results -->
+  <div id='output'></div>
+      
+      
+  </body>
+</html>

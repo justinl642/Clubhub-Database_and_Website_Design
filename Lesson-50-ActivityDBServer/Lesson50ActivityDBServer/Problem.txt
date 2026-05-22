@@ -1,0 +1,20 @@
+You will create a webpage that will display a card for each track(song) in the tracks table from chinook database. 
+
+Problem 1
+You will need to create the server with the route that will serve the information above first. Test your route to make sure that it’s working correctly.  
+
+
+For problems 2 to 4 using the other zip file provide in google assignment.
+
+
+
+
+Problem 2
+You need to make a webpage that will get the data from your database server and store into a variable.
+
+Problem 3
+Write a function that accepts an array of JSON that contains song information and generates a card for each song and displays it in the webpage. You will call this function in the init() after getting the data
+(Picture included)
+ 
+Problem 4
+Now add the CSS to that creates a flex container for the output div and all the CSS styling for the card.  You will need to target the html elements in the cards as per picture given 
