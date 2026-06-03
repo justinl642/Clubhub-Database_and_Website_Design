@@ -1,98 +1,320 @@
-html,body{
-  margin:0 auto;
-  font-family:Arial;
-}
-.container{
-  display:flex;
-  padding:10px;
-}
-.center{
-  justify-content:center;
-  align-items:center;
+* {
+  box-sizing: border-box;
 }
 
-nav{
-  background-color:cornflowerblue;
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #203040;
+  background: #F7F8F0;
 }
-nav a{
-  color:black;
-  padding:10px;
-  flex:1;
-  text-decoration:none;
-  text-align:center;
-}
-nav a:hover{
-  color:white;
-}
-.subbanner{
-  background-color:cornflowerblue;
-}
-#banner{
-  background-color:blue;
-  color:white;
-}
-#footer{
-  background-color:cornflowerblue;
-  color:white;
-  /*position:fixed;*/
-  left: 0;
-  right: 0;
-  bottom:0px;
-}
- 
 
-.highlight{
-  font-style:italic;
-  color:blue;
+a {
+  color: inherit;
+  text-decoration: none;
 }
-.heading{
-  font-weight:bold;
+
+.topbar {
+  display: block;
+  min-height: 100vh;
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 260px;
+  background: #7AAACE;
+  border-right: 2px solid #355872;
 }
-.card a{
-  text-decoration:none;
-  background-color:blue;
-  color:white;
-  border-radius:4px;
-  padding:6px;
-  box-shadow:2px 2px 2px black;
+
+.brand {
+  display: grid;
+  gap: 0.8rem;
+  align-content: start;
+  padding: 1.5rem 1rem;
 }
-.card a:hover{
-  background-color:cornflowerblue;
-}
-#panel{
-  flex:1;
-}
-.fitted{
-  max-width:200px;
-  min-width:200px;
-}
-.card img{
-  width:90%;
-}
-#output{
-  display:flex;
-  flex-wrap: wrap;
+
+.brand-mark {
+  width: 4.2rem;
+  height: 4.2rem;
+  border: 2px solid #355872;
+  display: flex;
   align-items: center;
-}
-.card{
-  /*flex:1; can create uneven cards*/
-  width: 250px;
-  margin:5px;
-  padding:5px;
-  border:1px solid gray;
-  text-align:center;
+  justify-content: center;
+  color: white;
+  background: #355872;
+  font-weight: 700;
 }
 
-/* CSS Style to create a button */
-
-.button{
-  text-decoration:none;
-  background-color:blue;
-  color:white;
-  border-radius:4px;
-  padding:6px;
-  box-shadow:2px 2px 2px black;
+.brand h1 {
+  margin: 0;
+  font-size: 1.35rem;
+  line-height: 1.2;
 }
-.button:hover{
-  background-color:cornflowerblue;
+
+.nav {
+  display: grid;
+  gap: 0.55rem;
+  padding: 0 1rem 1.5rem;
+  align-content: start;
+}
+
+.nav-link {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid #355872;
+  background: #9CD5FF;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  background: #355872;
+  color: white;
+}
+
+.page {
+  width: min(1080px, calc(100% - 300px));
+  margin-left: 280px;
+  padding: 1.5rem 0 4rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  background: #ffffff;
+  border: 1px solid #7AAACE;
+  padding: 1rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.eyebrow {
+  margin: 0;
+  color: #355872;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
+.lead {
+  max-width: 65ch;
+  line-height: 1.5;
+}
+
+.small-note {
+  margin: 0.25rem 0 0;
+  color: #526675;
+  font-size: 0.9rem;
+}
+
+.stats-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
+.stat-card {
+  border: 1px solid #7AAACE;
+  padding: 1rem;
+  background: #ffffff;
+  border-left: 0.6rem solid #355872;
+}
+
+.stat-value {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-top: 0.2rem;
+}
+
+.split-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.stack {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.filters {
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+label {
+  display: grid;
+  gap: 0.3rem;
+  font-size: 0.95rem;
+}
+
+input,
+select {
+  padding: 0.55rem 0.65rem;
+  border: 1px solid #7AAACE;
+  background: #ffffff;
+  font-size: 0.95rem;
+}
+
+.card-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.club-card {
+  perspective: 1000px;
+}
+
+.club-card-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  min-height: 225px;
+}
+
+.club-card:hover .club-card-inner {
+  transform: rotateY(180deg);
+}
+
+.club-card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  border: 1px solid #7AAACE;
+  padding: 1rem;
+  background: white;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.club-card-back {
+  transform: rotateY(180deg);
+  background: #9CD5FF;
+}
+
+.club-badge {
+  display: inline-block;
+  padding: 0.25rem 0.55rem;
+  background: #355872;
+  color: white;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.club-description {
+  margin: 0;
+}
+
+.club-meta {
+  display: grid;
+  gap: 0.3rem;
+  color: #526675;
+  font-size: 0.9rem;
+}
+
+.club-meet {
+  font-weight: 700;
+}
+
+.join-link {
+  margin-top: auto;
+  display: inline-block;
+  padding: 0.5rem 0.8rem;
+  background: #355872;
+  color: white;
+  text-align: center;
+}
+
+.event-row,
+.announcement-row details,
+.bar-row,
+.gallery-card {
+  border: 1px solid #7AAACE;
+  padding: 0.8rem;
+  background: #ffffff;
+}
+
+.event-title,
+.bar-title,
+.gallery-title {
+  font-weight: 700;
+}
+
+.bar-row {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.bar-track {
+  height: 9px;
+  background: #F7F8F0;
+  border: 1px solid #7AAACE;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: #355872;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.gallery-card {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.gallery-thumb {
+  height: 120px;
+  background: linear-gradient(135deg, #355872 0%, #7AAACE 55%, #9CD5FF 100%);
+  border: 1px solid #355872;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+#foot {
+  margin-left: 280px;
+  border-top: 2px solid #355872;
+  background: #b9d0e7;
+  color: #203040;
+  padding: 0.8rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+@media (max-width: 800px) {
+  .topbar {
+    position: static;
+    min-height: auto;
+    width: auto;
+    display: block;
+    border-right: 0;
+    border-bottom: 2px solid #355872;
+  }
+
+  .page,
+  #foot {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }

@@ -1,49 +1,52 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <title>repl.it</title>
-    <link href="style.css" rel="stylesheet" type="text/css" />
-    <!-- We need to import JQUERY Library to make the api call-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <script src="script.js"></script>
-   </head>
-  <body id="body" onload="init()">
-    <div id="banner" class="container center">
-      <h1> Lesson 51 Classwork - Filtering  </h1>
-    </div>
-    <div class="container subbanner">
-      <div>
-        <p>This webpage will allow a user to search for a employee by City.
-        </p>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Club Hub | Home</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body id="home">
+    <div class="topbar">
+      <div class="brand">
+        <div class="brand-mark">CH</div>
+        <div>
+          <p class="eyebrow">Club Hub</p>
+          <h1>Discover school clubs, events, and updates</h1>
+        </div>
+      </div>
+      <div class="nav">
+        <a class="nav-link active" href="/">Home</a>
+        <a class="nav-link" href="/clubs.html">View & Filter</a>
+        <a class="nav-link" href="/analysis.html">Analysis</a>
+        <a class="nav-link" href="/activity.html">Activity</a>
       </div>
     </div>
-
-    <!-- Add the filter container add: textbox, button add CSS-->
-    <div class="container filter">
-      <div>
-        <h4> Search for Employee by City
-        </h4>
-<!--
-        Problem 1:
-        Add an ID and a placeholder for the textbox
--->
-        <input style="flex:2;text-align:right;" type="text" id="" placeholder="" >       
-<!-- > &nbsp;  
-        Problem 2:
-        Add a event handler function "filter()", which will be 
-        called when the user clicks on the button. You will then 
-        need to write the function.
--->
-        <a class="button" onclick=""> Search </a><br>
+    <div class="page">
+      <div class="panel">
+        <p class="eyebrow">About Club Hub</p>
+        <h2>Find clubs that match your interests and check what is happening next.</h2>
+        <p class="lead">Browse club cards, filter by category, location, and popularity, then explore events and announcements.</p>
+      </div>
+      <div id="home-stats" class="stats-grid"></div>
+      <div class="split-grid">
+        <div class="panel">
+          <div class="section-header">
+            <h3>Upcoming events</h3>
+            <p class="small-note">Sorted by date</p>
+          </div>
+          <div id="home-events" class="stack"></div>
+        </div>
+        <div class="panel">
+          <div class="section-header">
+            <h3>Recent announcements</h3>
+            <p class="small-note">Use the collapsible cards</p>
+          </div>
+          <div id="home-announcements" class="stack"></div>
+        </div>
       </div>
     </div>
-    
-  <!-- Create a container to display results -->
-  <div id='output'></div>
-      
-      
+    <div id="foot">By: Haoxuan Zheng @ 2026</div>
   </body>
 </html>

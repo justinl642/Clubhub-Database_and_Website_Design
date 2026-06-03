@@ -3,66 +3,66 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Club Hub | Activity</title>
+    <title>Club Hub | Analysis</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
   </head>
-  <body id="activity">
+  <body id="analysis">
     <div class="topbar">
       <div class="brand">
         <div class="brand-mark">CH</div>
         <div>
           <p class="eyebrow">Club Hub</p>
-          <h1>Activity</h1>
+          <h1>Analysis</h1>
         </div>
       </div>
       <div class="nav">
         <a class="nav-link" href="/">Home</a>
         <a class="nav-link" href="/clubs.html">View & Filter</a>
-        <a class="nav-link" href="/analysis.html">Analysis</a>
-        <a class="nav-link active" href="/activity.html">Activity</a>
+        <a class="nav-link active" href="/analysis.html">Analysis</a>
+        <a class="nav-link" href="/activity.html">Activity</a>
       </div>
     </div>
     <div class="page">
       <div class="panel">
         <div class="section-header">
           <div>
-            <p class="eyebrow">Current activity</p>
-            <h2>See events, recent memberships, and a photo gallery.</h2>
+            <p class="eyebrow">Summary</p>
+            <h2>Quick view of club activity by category.</h2>
           </div>
-          <p class="small-note">Built from joined tables</p>
+          <p class="small-note">Based on the database tables</p>
         </div>
-        <div id="activity-stats" class="stats-grid"></div>
+        <div id="analysis-stats" class="stats-grid"></div>
       </div>
       <div class="panel">
         <div class="section-header">
           <h3>Category breakdown</h3>
-          <p class="small-note">Clubs, members, and events by category</p>
+          <p class="small-note">Clubs, members, and events</p>
         </div>
-        <div id="activity-breakdown" class="stack"></div>
+        <div id="analysis-breakdown" class="stack"></div>
       </div>
       <div class="split-grid">
         <div class="panel">
           <div class="section-header">
-            <h3>Upcoming events</h3>
-            <p class="small-note">Sorted by date</p>
+            <h3>Top upcoming events</h3>
+            <p class="small-note">Joined from clubs and events</p>
           </div>
-          <div id="activity-events" class="stack"></div>
+          <div id="analysis-events" class="stack"></div>
         </div>
         <div class="panel">
           <div class="section-header">
             <h3>Recent memberships</h3>
-            <p class="small-note">Student join history</p>
+            <p class="small-note">Joined through membership records</p>
           </div>
-          <div id="activity-memberships" class="stack"></div>
+          <div id="analysis-memberships" class="stack"></div>
         </div>
       </div>
       <div class="panel">
         <div class="section-header">
-          <h3>Photo gallery</h3>
-          <p class="small-note">Feature image placeholders from events</p>
+          <h3>Activity gallery</h3>
+          <p class="small-note">Event image placeholders</p>
         </div>
-        <div id="activity-gallery" class="gallery-grid"></div>
+        <div id="analysis-gallery" class="gallery-grid"></div>
       </div>
     </div>
     <div id="foot">By: Haoxuan Zheng @ 2026</div>

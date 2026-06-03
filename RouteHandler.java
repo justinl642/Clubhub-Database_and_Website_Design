@@ -32,6 +32,10 @@ public class RouteHandler implements HttpHandler {
         this.response = response;
         this.contentType = "text";
     }
+    public RouteHandler(String response, String contentType){
+        this.response = response;
+        this.contentType = contentType;
+    }
     public RouteHandler(Database db, String sql){
         this.db = db;
         this.sql = sql;
@@ -43,7 +47,11 @@ public class RouteHandler implements HttpHandler {
           System.out.println("Message to be sent: " + this.response);
       }
       try{
-        send(this.response,exchange);
+        if(this.contentType.equals("db") ){
+          send(this.response,exchange);
+        }else{
+          sendFile(this.response,exchange);
+        }
       }catch(IOException e){
         System.out.println("From Handle: " + e.getMessage());
       }
@@ -96,9 +104,7 @@ public class RouteHandler implements HttpHandler {
 	}
 	public static void send(String response, HttpExchange exchange) throws IOException{
 		exchange.getResponseHeaders().add("Access-Control-Allow-Origin","*");
-    System.out.println(response.length());
-    System.out.println(response.getBytes());
-    System.out.println(response.getBytes().length);
+    exchange.getResponseHeaders().add("Content-Type","application/json; charset=utf-8");
     try{
         exchange.sendResponseHeaders(200, response.getBytes().length);
         OutputStream os = exchange.getResponseBody();
@@ -110,6 +116,19 @@ public class RouteHandler implements HttpHandler {
     }
         
 	}
+
+  public void sendFile(String response, HttpExchange exchange) throws IOException{
+		exchange.getResponseHeaders().add("Access-Control-Allow-Origin","*");
+    exchange.getResponseHeaders().add("Content-Type", this.contentType);
+    try{
+        exchange.sendResponseHeaders(200, response.getBytes().length);
+        OutputStream os = exchange.getResponseBody();
+        os.write(response.getBytes());
+        os.close();
+    }catch(IOException e){
+      System.out.println("From Send File: " + e.getMessage());
+    }
+  }
 
 
 }

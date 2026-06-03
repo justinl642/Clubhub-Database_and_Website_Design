@@ -14,15 +14,27 @@ less the 32.
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 public class Database{
     private String url;
+    private String dbFile;
     private Connection conn;
     private boolean debug;
+    private boolean useCli;
 
     public Database(String url){
         this.url = url;
+        this.dbFile = url.replace("jdbc:sqlite:", "");
         this.debug = true;
+        this.useCli = false;
+        try{
+            Class.forName("org.sqlite.JDBC");
+        } catch (ClassNotFoundException e) {
+            if(this.debug) System.out.println(e.getMessage());
+        }
         connect(); 
     }
     public void setDebug(boolean state){
@@ -34,7 +46,8 @@ public class Database{
             //Create a connection to the database. If it doesn't exist, create the DB
             conn = DriverManager.getConnection(url);    
         } catch (SQLException e) {
-            if(this.debug) System.out.println(e.getMessage());
+            if(this.debug && !this.useCli) System.out.println("Using sqlite3 command fallback for this computer.");
+            this.useCli = true;
             success = false;
         } 
         return success;
@@ -42,7 +55,9 @@ public class Database{
     private boolean close(){
        boolean success = true;
         try{
-            conn.close();   
+            if(conn != null){
+                conn.close();   
+            }
         } catch (SQLException e) {
             if(this.debug) System.out.println(e.getMessage());
             success = false;
@@ -54,6 +69,9 @@ public class Database{
     */
     public boolean runSQL(String sql){
         boolean success = true;
+        if(this.useCli){
+            return runSQLCli(sql, false).length() >= 0;
+        }
         connect();
         try(Connection conn = DriverManager.getConnection(url);
             Statement stmt = conn.createStatement();)
@@ -75,6 +93,9 @@ public class Database{
     */
     public String runSQL(String sql, String format){
         String result = null;
+        if(this.useCli && format.equals("json")){
+            return runSQLCli(sql, true);
+        }
         connect();
         try (Statement stmt  = conn.createStatement()){
             ResultSet rs = stmt.executeQuery(sql);
@@ -92,6 +113,38 @@ public class Database{
             close();
         }
         return result;
+    }
+
+    private String runSQLCli(String sql, boolean json){
+        ArrayList<String> command = new ArrayList<String>();
+        command.add("sqlite3");
+        if(json){
+            command.add("-json");
+        }
+        command.add(this.dbFile);
+        command.add(sql);
+
+        try{
+            ProcessBuilder builder = new ProcessBuilder(command);
+            builder.redirectErrorStream(true);
+            Process process = builder.start();
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            InputStream input = process.getInputStream();
+            byte[] buffer = new byte[1024];
+            int read;
+            while((read = input.read(buffer)) != -1){
+                output.write(buffer, 0, read);
+            }
+            int exit = process.waitFor();
+            String response = output.toString(StandardCharsets.UTF_8);
+            if(exit != 0 && this.debug){
+                System.out.println(response);
+            }
+            return response;
+        } catch(Exception e){
+            if(this.debug) System.out.println(e.getMessage());
+        }
+        return "";
     }
     
     public String pad(String text, int width){
