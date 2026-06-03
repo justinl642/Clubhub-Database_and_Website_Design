@@ -71,7 +71,7 @@ a {
 }
 
 .page {
-  width: min(1080px, calc(100% - 300px));
+  width: auto;
   margin-left: 280px;
   padding: 1.5rem 0 4rem;
   display: grid;
