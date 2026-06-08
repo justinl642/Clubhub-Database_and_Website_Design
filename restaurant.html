@@ -3,22 +3,22 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Club Hub | View & Filter</title>
+    <title> Restaurant | View & Filter</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
   </head>
-  <body id="clubs">
+  <body id="restaurants">
     <div class="topbar">
       <div class="brand">
         <div class="brand-mark">HUB</div>
         <div>
-          <p class="eyebrow">Club Hub</p>
-          <h1>Club directory</h1>
+          <p class="eyebrow">Restaurant</p>
+          <h1>Restaurant directory</h1>
         </div>
       </div>
       <div class="nav">
         <a class="nav-link" href="/">Home</a>
-        <a class="nav-link active" href="/clubs.html">View & Filter</a>
+        <a class="nav-link active" href="/restaurant.html">View & Filter</a>
         <a class="nav-link" href="/analysis.html">Analysis</a>
         <a class="nav-link" href="/activity.html">Activity</a>
         <div id="translate-container"></div>
@@ -29,31 +29,31 @@
         <div class="section-header">
           <div>
             <p class="eyebrow">Search and filter</p>
-            <h2>Filter clubs by interest, location, and popularity.</h2>
+            <h2>Filter restaurants by interest, location, and popularity.</h2>
           </div>
           <p class="small-note">Hover cards to see contact details</p>
         </div>
         <div class="filters">
           <label>
             <div>Search by name</div>
-            <input id="club-search" type="search" placeholder="Search clubs">
+            <input id="restaurant-search" type="search" placeholder="Search restaurants">
           </label>
           <label>
             <div>Category</div>
-            <select id="club-category">
+            <select id="restaurant-category">
               <option value="all">All categories</option>
             </select>
           </label>
           <label>
             <div>Location</div>
-            <select id="club-location">
+            <select id="restaurant-location">
               <option value="all">All locations</option>
             </select>
           </label>
           <label>
             <div>Popularity</div>
-            <select id="club-popularity">
-              <option value="all">All clubs</option>
+            <select id="restaurant-popularity">
+              <option value="all">All restaurants</option>
               <option value="30">30+ members</option>
               <option value="50">50+ members</option>
               <option value="60">60+ members</option>
@@ -61,7 +61,7 @@
           </label>
           <label>
             <div>Sort by</div>
-            <select id="club-sort">
+            <select id="restaurant-sort">
               <option value="popular">Most popular</option>
               <option value="name">Name</option>
               <option value="events">Upcoming events</option>
@@ -71,12 +71,12 @@
       </div>
       <div class="panel">
         <div class="section-header">
-          <h3>Club cards</h3>
-          <div id="club-count" class="small-note"></div>
+          <h3>Restaurant cards</h3>
+          <div id="Restaurant-count" class="small-note"></div>
         </div>
-        <div id="club-grid" class="card-grid"></div>
+        <div id="Restaurant-grid" class="card-grid"></div>
       </div>
     </div>
-    <div id="foot">By: Haoxuan Zheng @ 2026</div>
+    <div id="foot">By: Justin Li and Jude Anderson @ 2026</div>
   </body>
 </html>
