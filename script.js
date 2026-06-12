@@ -1,6 +1,6 @@
 let users = [];
 let memberships = [];
-let clubs = [];
+let restaurants = [];
 let events = [];
 let announcements = [];
 
@@ -13,7 +13,7 @@ async function loadJson(route) {
 
 let usersRoute = "users";
 let membershipsRoute = "memberships";
-let clubsRoute = "clubs";
+let restaurantsRoute = "restaurants";
 let eventsRoute = "events";
 let announcementsRoute = "announcements";
 let analysisRoute = "analysis";
@@ -28,9 +28,9 @@ async function loadMemberships() {
   console.log(memberships);
 }
 
-async function loadClubs() {
-  let clubs = await (await fetch(link + clubsRoute)).json();
-  console.log(clubs);
+async function loadRestaurants() {
+  let restaurants = await (await fetch(link + restaurantsRoute)).json();
+  console.log(restaurants);
 }
 
 async function loadEvents() {
@@ -60,26 +60,26 @@ function uniqueValues(arr){
 }
 
 
-function applyClubFilters(){
-  let search = document.getElementById("club-search").value.trim().toLowerCase();
-  let category = document.getElementById("club-category").value;
-  let location = document.getElementById("club-location").value;
-  let popularityValue = document.getElementById("club-popularity").value;
-  let sortValue = document.getElementById("club-sort").value;
+function applyRestaurantFilters(){
+  let search = document.getElementById("restaurant-search").value.trim().toLowerCase();
+  let category = document.getElementById("restaurant-category").value;
+  let location = document.getElementById("restaurant-location").value;
+  let popularityValue = document.getElementById("restaurant-popularity").value;
+  let sortValue = document.getElementById("restaurant-sort").value;
   let minMembers = 0;
   if(popularityValue != "all"){
     minMembers = Number(popularityValue || 0);
   }
 
   let filtered = [];
-  for(let i = 0; i < clubs.length; i++){
-    let club = clubs[i];
-    let nameMatch = club.name.toLowerCase().indexOf(search) != -1;
-    let categoryMatch = category == "all" || club.category == category;
-    let locationMatch = location == "all" || club.location == location;
-    let popularMatch = Number(club.member_count) >= minMembers;
+  for(let i = 0; i < restaurants.length; i++){
+    let restaurant = restaurants[i];
+    let nameMatch = restaurant.name.toLowerCase().indexOf(search) != -1;
+    let categoryMatch = category == "all" || restaurant.category == category;
+    let locationMatch = location == "all" || restaurant.location == location;
+    let popularMatch = Number(restaurant.member_count) >= minMembers;
     if(nameMatch && categoryMatch && locationMatch && popularMatch){
-      filtered[filtered.length] = club;
+      filtered[filtered.length] = restaurant;
     }
   }
 
@@ -91,59 +91,59 @@ function applyClubFilters(){
     filtered.sort(function(a, b){ return Number(b.member_count) - Number(a.member_count); });
   }
 
-  let grid = document.getElementById("club-grid");
-  let count = document.getElementById("club-count");
-  count.textContent = filtered.length + " clubs";
+  let grid = document.getElementById("restaurant-grid");
+  let count = document.getElementById("restaurant-count");
+  count.textContent = filtered.length + " restaurants";
 
   let cards = "";
   for(let i = 0; i < filtered.length; i++){
-    let club = filtered[i];
-    cards += '<div class="club-card">';
-    cards += '<div class="club-card-inner">';
-    cards += '<div class="club-card-face club-card-front">';
-    cards += '<div class="club-badge">' + club.category + '</div>';
-    cards += '<h3>' + club.name + '</h3>';
-    cards += '<p class="club-description">' + club.description + '</p>';
-    cards += '<div class="club-meta">';
-    cards += '<div>' + club.member_count + ' members</div>';
-    cards += '<div>' + club.location + '</div>';
+    let restaurant = filtered[i];
+    cards += '<div class="restaurant-card">';
+    cards += '<div class="restaurant-card-inner">';
+    cards += '<div class="restaurant-card-face restaurant-card-front">';
+    cards += '<div class="restaurant-badge">' + restaurant.category + '</div>';
+    cards += '<h3>' + restaurant.name + '</h3>';
+    cards += '<p class="restaurant-description">' + restaurant.description + '</p>';
+    cards += '<div class="restaurant-meta">';
+    cards += '<div>' + restaurant.member_count + ' members</div>';
+    cards += '<div>' + restaurant.location + '</div>';
     cards += '</div></div>';
-    cards += '<div class="club-card-face club-card-back">';
-    cards += '<div class="club-meet">' + club.meeting_day + ' • ' + club.meeting_time + '</div>';
-    cards += '<p class="small-note">Contact: ' + club.contact_email + '</p>';
-    cards += '<p class="small-note">' + club.event_count + ' upcoming events</p>';
-    cards += '<a class="join-link" href="' + club.join_url + '">Connect</a>';
+    cards += '<div class="restaurant-card-face restaurant-card-back">';
+    cards += '<div class="restaurant-meet">' + restaurant.meeting_day + ' • ' + restaurant.meeting_time + '</div>';
+    cards += '<p class="small-note">Contact: ' + restaurant.contact_email + '</p>';
+    cards += '<p class="small-note">' + restaurant.event_count + ' upcoming events</p>';
+    cards += '<a class="join-link" href="' + restaurant.join_url + '">Connect</a>';
     cards += '</div></div></div>';
   }
 
-  grid.innerHTML = cards || '<p class="small-note">No clubs match this filter.</p>';
+  grid.innerHTML = cards || '<p class="small-note">No restaurants match this filter.</p>';
 }
 
 async function renderHome(){
-  clubs = await loadJson("/clubs");
+  restaurants = await loadJson("/restaurants");
   events = await loadJson("/events");
   announcements = await loadJson("/announcements");
   users = await loadJson("/users");
   memberships = await loadJson("/memberships");
 
-  let totalClubs = clubs.length;
+  let totalRestaurants = restaurants.length;
   let totalMembers = users.length;
   let totalMemberships = memberships.length;
   let totalEvents = events.length;
-  let topClub = clubs[0] || { name: "N/A", category: "" };
+  let topRestaurant = restaurants[0] || { name: "N/A", category: "" };
 
-  for(let i = 1; i < clubs.length; i++){
-    if(Number(clubs[i].member_count) > Number(topClub.member_count)){
-      topClub = clubs[i];
+  for(let i = 1; i < restaurants.length; i++){
+    if(Number(restaurants[i].member_count) > Number(topRestaurant.member_count)){
+      topRestaurant = restaurants[i];
     }
   }
 
   let stats = "";
-  stats += '<div class="stat-card"><p class="eyebrow">Clubs</p><div class="stat-value">' + totalClubs + '</div><p class="small-note">Active groups on campus</p></div>';
+  stats += '<div class="stat-card"><p class="eyebrow">Restaurants</p><div class="stat-value">' + totalRestaurants + '</div><p class="small-note">Active groups on campus</p></div>';
   stats += '<div class="stat-card"><p class="eyebrow">Members</p><div class="stat-value">' + totalMembers + '</div><p class="small-note">Students in the database</p></div>';
-  stats += '<div class="stat-card"><p class="eyebrow">Memberships</p><div class="stat-value">' + totalMemberships + '</div><p class="small-note">Clubs joined by students</p></div>';
+  stats += '<div class="stat-card"><p class="eyebrow">Memberships</p><div class="stat-value">' + totalMemberships + '</div><p class="small-note">Restaurants joined by students</p></div>';
   stats += '<div class="stat-card"><p class="eyebrow">Events</p><div class="stat-value">' + totalEvents + '</div><p class="small-note">Upcoming activities listed</p></div>';
-  stats += '<div class="stat-card"><p class="eyebrow">Top club</p><div class="stat-value">' + topClub.name + '</div><p class="small-note">' + topClub.category + '</p></div>';
+  stats += '<div class="stat-card"><p class="eyebrow">Top restaurant</p><div class="stat-value">' + topRestaurant.name + '</div><p class="small-note">' + topRestaurant.category + '</p></div>';
   document.getElementById("home-stats").innerHTML = stats;
 
   let eventList = "";
@@ -151,7 +151,7 @@ async function renderHome(){
     let event = events[i];
     eventList += '<div class="event-row">';
     eventList += '<div class="event-title">' + event.name + '</div>';
-    eventList += '<div class="small-note">' + event.club_name + ' • ' + formatDate(event.date) + ' • ' + event.time + '</div>';
+    eventList += '<div class="small-note">' + event.restaurant_name + ' • ' + formatDate(event.date) + ' • ' + event.time + '</div>';
     eventList += '<div class="small-note">' + event.location + '</div>';
     eventList += '</div>';
   }
@@ -164,47 +164,47 @@ async function renderHome(){
     announcementList += '<div class="announcement-row">';
     announcementList += '<details' + open + '>';
     announcementList += '<summary>' + item.title + '</summary>';
-    announcementList += '<p class="small-note">' + item.club_name + ' • ' + formatDate(item.posted_date) + '</p>';
+    announcementList += '<p class="small-note">' + item.restaurant_name + ' • ' + formatDate(item.posted_date) + '</p>';
     announcementList += '<p>' + item.message + '</p>';
     announcementList += '</details></div>';
   }
   document.getElementById("home-announcements").innerHTML = announcementList;
 }
 
-async function renderClubs(){
-  clubs = await loadJson("/clubs");
+async function renderRestaurants(){
+  restaurants = await loadJson("/Restaurants");
 
   let categoryList = [];
   let locationList = [];
-  for(let i = 0; i < clubs.length; i++){
-    categoryList[categoryList.length] = clubs[i].category;
-    locationList[locationList.length] = clubs[i].location;
+  for(let i = 0; i < restaurants.length; i++){
+    categoryList[categoryList.length] = restaurants[i].category;
+    locationList[locationList.length] = restaurants[i].location;
   }
   let categories = uniqueValues(categoryList);
   let locations = uniqueValues(locationList);
-  fillSelect(document.getElementById("club-category"), categories);
-  fillSelect(document.getElementById("club-location"), locations);
+  fillSelect(document.getElementById("restaurant-category"), categories);
+  fillSelect(document.getElementById("restaurant-location"), locations);
 
-  document.getElementById("club-search").addEventListener("input", applyClubFilters);
-  document.getElementById("club-category").addEventListener("change", applyClubFilters);
-  document.getElementById("club-location").addEventListener("change", applyClubFilters);
-  document.getElementById("club-popularity").addEventListener("change", applyClubFilters);
-  document.getElementById("club-sort").addEventListener("change", applyClubFilters);
-  applyClubFilters();
+  document.getElementById("restaurant-search").addEventListener("input", applyRestaurantFilters);
+  document.getElementById("restaurant-category").addEventListener("change", applyRestaurantFilters);
+  document.getElementById("restaurant-location").addEventListener("change", applyRestaurantFilters);
+  document.getElementById("restaurant-popularity").addEventListener("change", applyRestaurantFilters);
+  document.getElementById("restaurant-sort").addEventListener("change", applyRestaurantFilters);
+  applyRestaurantFilters();
 }
 
 async function renderActivity(){
   summary = await loadJson("/analysis");
-  clubs = await loadJson("/clubs");
+  restaurants = await loadJson("/restaurants");
   events = await loadJson("/events");
   memberships = await loadJson("/memberships");
   users = await loadJson("/users");
 
-  let totalClubs = clubs.length;
+  let totalRestaurants = restaurants.length;
   let totalMembers = users.length;
   let totalMemberships = memberships.length;
   let totalEvents = events.length;
-  let topCategory = summary[0] || { category: "N/A", club_count: 0 };
+  let topCategory = summary[0] || { category: "N/A", restaurant_count: 0 };
   let maxMembers = 0;
 
   for(let i = 0; i < summary.length; i++){
@@ -215,11 +215,11 @@ async function renderActivity(){
   }
 
   let stats = "";
-  stats += '<div class="stat-card"><p class="eyebrow">Total clubs</p><div class="stat-value">' + totalClubs + '</div><p class="small-note">Across all categories</p></div>';
+  stats += '<div class="stat-card"><p class="eyebrow">Total restaurants</p><div class="stat-value">' + totalRestaurants + '</div><p class="small-note">Across all categories</p></div>';
   stats += '<div class="stat-card"><p class="eyebrow">Total members</p><div class="stat-value">' + totalMembers + '</div><p class="small-note">Student records stored</p></div>';
-  stats += '<div class="stat-card"><p class="eyebrow">Total memberships</p><div class="stat-value">' + totalMemberships + '</div><p class="small-note">Joined club records</p></div>';
+  stats += '<div class="stat-card"><p class="eyebrow">Total memberships</p><div class="stat-value">' + totalMemberships + '</div><p class="small-note">Joined restaurant records</p></div>';
   stats += '<div class="stat-card"><p class="eyebrow">Total events</p><div class="stat-value">' + totalEvents + '</div><p class="small-note">Upcoming events listed</p></div>';
-  stats += '<div class="stat-card"><p class="eyebrow">Top category</p><div class="stat-value">' + topCategory.category + '</div><p class="small-note">' + topCategory.club_count + ' clubs</p></div>';
+  stats += '<div class="stat-card"><p class="eyebrow">Top category</p><div class="stat-value">' + topCategory.category + '</div><p class="small-note">' + topCategory.restaurant_count + ' restaurants</p></div>';
   document.getElementById("activity-stats").innerHTML = stats;
 
   let breakdown = "";
@@ -228,7 +228,7 @@ async function renderActivity(){
     let width = maxMembers == 0 ? 0 : Math.round((item.total_members / maxMembers) * 100);
     breakdown += '<div class="bar-row">';
     breakdown += '<div class="bar-title">' + item.category + '</div>';
-    breakdown += '<div class="small-note">' + item.club_count + ' clubs • ' + item.total_members + ' members • ' + item.total_events + ' events</div>';
+    breakdown += '<div class="small-note">' + item.restaurant_count + ' restaurants • ' + item.total_members + ' members • ' + item.total_events + ' events</div>';
     breakdown += '<div class="bar-track"><div class="bar-fill" style="width:' + width + '%"></div></div>';
     breakdown += '</div>';
   }
@@ -239,7 +239,7 @@ async function renderActivity(){
     let event = events[i];
     eventList += '<div class="event-row">';
     eventList += '<div class="event-title">' + event.name + '</div>';
-    eventList += '<div class="small-note">' + event.club_name + ' • ' + formatDate(event.date) + ' • ' + event.time + '</div>';
+    eventList += '<div class="small-note">' + event.restaurant_name + ' • ' + formatDate(event.date) + ' • ' + event.time + '</div>';
     eventList += '<div class="small-note">' + event.location + '</div>';
     eventList += '</div>';
   }
@@ -250,7 +250,7 @@ async function renderActivity(){
     let item = memberships[i];
     membershipList += '<div class="event-row">';
     membershipList += '<div class="event-title">' + item.first_name + ' ' + item.last_name + '</div>';
-    membershipList += '<div class="small-note">' + item.club_name + ' • Joined ' + formatDate(item.joined_date) + '</div>';
+    membershipList += '<div class="small-note">' + item.restaurant_name + ' • Joined ' + formatDate(item.joined_date) + '</div>';
     membershipList += '</div>';
   }
   document.getElementById("activity-memberships").innerHTML = membershipList;
@@ -261,7 +261,7 @@ async function renderActivity(){
     galleryList += '<div class="gallery-card">';
     galleryList += '<div class="gallery-thumb"><img src="pic/' + event.featured_image + '.jpg" width="200" height="100" style="object-fit:cover; display:block; margin-bottom:4px;"></div>';
     galleryList += '<div class="gallery-title">' + event.name + '</div>';
-    galleryList += '<div class="small-note">' + event.club_name + '</div>';
+    galleryList += '<div class="small-note">' + event.restaurant_name + '</div>';
     galleryList += '</div>';
   }
   document.getElementById("activity-gallery").innerHTML = galleryList;
@@ -284,7 +284,7 @@ async function renderAnalysis(){
     let item = summary[i];
     stats += '<div class="stat-card">';
     stats += '<p class="eyebrow">' + item.category + '</p>';
-    stats += '<div class="stat-value">' + item.club_count + ' clubs</div>';
+    stats += '<div class="stat-value">' + item.restaurant_count + ' restaurants</div>';
     stats += '<p class="small-note">' + item.total_members + ' members</p>';
     stats += '</div>';
   }
@@ -296,7 +296,7 @@ async function renderAnalysis(){
     let width = maxMembers == 0 ? 0 : Math.round((item.total_members / maxMembers) * 100);
     breakdown += '<div class="bar-row">';
     breakdown += '<div class="bar-title">' + item.category + '</div>';
-    breakdown += '<div class="small-note">' + item.club_count + ' clubs • ' + item.total_members + ' members • ' + item.total_events + ' events</div>';
+    breakdown += '<div class="small-note">' + item.restaurant_count + ' restaurants • ' + item.total_members + ' members • ' + item.total_events + ' events</div>';
     breakdown += '<div class="bar-track"><div class="bar-fill" style="width:' + width + '%"></div></div>';
     breakdown += '</div>';
   }
@@ -307,7 +307,7 @@ async function renderAnalysis(){
     let event = events[i];
     eventList += '<div class="event-row">';
     eventList += '<div class="event-title">' + event.name + '</div>';
-    eventList += '<div class="small-note">' + event.club_name + ' • ' + formatDate(event.date) + ' • ' + event.time + '</div>';
+    eventList += '<div class="small-note">' + event.restaurant_name + ' • ' + formatDate(event.date) + ' • ' + event.time + '</div>';
     eventList += '<div class="small-note">' + event.location + '</div>';
     eventList += '</div>';
   }
@@ -318,7 +318,7 @@ async function renderAnalysis(){
     let item = memberships[i];
     membershipList += '<div class="event-row">';
     membershipList += '<div class="event-title">' + item.first_name + ' ' + item.last_name + '</div>';
-    membershipList += '<div class="small-note">' + item.club_name + ' • Joined ' + formatDate(item.joined_date) + '</div>';
+    membershipList += '<div class="small-note">' + item.restaurant_name + ' • Joined ' + formatDate(item.joined_date) + '</div>';
     membershipList += '</div>';
   }
   document.getElementById("analysis-memberships").innerHTML = membershipList;
@@ -329,7 +329,7 @@ async function renderAnalysis(){
     galleryList += '<div class="gallery-card">';
     galleryList += '<div class="gallery-thumb"><img src="pic/' + event.featured_image + '.jpg" width="200" height="100" style="object-fit:cover; display:block; margin-bottom:4px;"></div>';
     galleryList += '<div class="gallery-title">' + event.name + '</div>';
-    galleryList += '<div class="small-note">' + event.club_name + '</div>';
+    galleryList += '<div class="small-note">' + event.restaurant_name + '</div>';
     galleryList += '</div>';
   }
   document.getElementById("analysis-gallery").innerHTML = galleryList;
