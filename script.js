@@ -12,65 +12,40 @@ async function loadJson(route) {
 }
 
 let usersRoute = "users";
+let membershipsRoute = "memberships";
+let clubsRoute = "clubs";
+let eventsRoute = "events";
+let announcementsRoute = "announcements";
+let analysisRoute = "analysis";
+
 async function loadUsers() {
-  let info = await fetch(link + usersRoute);
-  let users = await info.json();
-  renderUsers(users);
+  let users = await (await fetch(link + usersRoute)).json();
   console.log(users);
 }
 
-let membershipsRoute = "memberships";
 async function loadMemberships() {
-  let info = await fetch(link + membershipsRoute);
-  let memberships = await info.json();
-  renderMemberships(memberships);
+  let memberships = await (await fetch(link + membershipsRoute)).json();
   console.log(memberships);
 }
 
-let clubsRoute = "clubs";
 async function loadClubs() {
-  let info = await fetch(link + clubsRoute);
-  let clubs = await info.json();
-  renderClubs(clubs);
+  let clubs = await (await fetch(link + clubsRoute)).json();
   console.log(clubs);
 }
 
-let eventsRoute = "events";
 async function loadEvents() {
-  let info = await fetch(link + eventsRoute);
-  let events = await info.json();
-  renderEvents(events);
+  let events = await (await fetch(link + eventsRoute)).json();
   console.log(events);
 }
 
-let announcementsRoute = "announcements";
 async function loadAnnouncements() {
-  let info = await fetch(link + announcementsRoute);
-  let announcements = await info.json();
-  renderAnnouncements(announcements);
+  let announcements = await (await fetch(link + announcementsRoute)).json();
   console.log(announcements);
 }
 
-let analysisRoute = "analysis";
 async function loadAnalysis() {
-  let info = await fetch(link + analysisRoute);
-  let analysis = await info.json();
-  renderAnalysis(analysis);
+  let analysis = await (await fetch(link + analysisRoute)).json();
   console.log(analysis);
-}
-
-function formatDate(value){
-  let date = new Date(value + "T12:00:00");
-  return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-}
-
-function fillSelect(select, values){
-  for(let i = 0; i < values.length; i++){
-    let option = document.createElement("option");
-    option.value = values[i];
-    option.textContent = values[i];
-    select.appendChild(option);
-  }
 }
 
 function uniqueValues(arr){
