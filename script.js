@@ -360,43 +360,4 @@ async function renderAnalysis(){
   document.getElementById("analysis-gallery").innerHTML = galleryList;
 }
 
-function addGoogleTranslate(){
-  var container = document.getElementById('translate-container');
-  if(!container){
-    container = document.createElement('div');
-    container.id = 'translate-container';
-    container.style.cssText = 'position:fixed;top:8px;right:8px;z-index:1000;background:rgba(255,255,255,0.9);padding:6px;border-radius:4px;box-shadow:0 1px 4px rgba(0,0,0,0.1);';
-    document.body.appendChild(container);
-  }
-  // avoid adding multiple widgets
-  if(!document.getElementById('google_translate_element')){
-    var widget = document.createElement('div');
-    widget.id = 'google_translate_element';
-    container.appendChild(widget);
-    var s = document.createElement('script');
-    s.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-    document.head.appendChild(s);
-    window.googleTranslateElementInit = function(){
-      new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-    };
-  }
-}
 
-async function init(){
-  addGoogleTranslate();
-  let page = document.body.id;
-  if(page == "home"){
-    await renderHome();
-  }
-  if(page == "clubs"){
-    await renderClubs();
-  }
-  if(page == "activity"){
-    await renderActivity();
-  }
-  if(page == "analysis"){
-    await renderAnalysis();
-  }
-}
-
-init();
