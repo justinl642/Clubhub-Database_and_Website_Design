@@ -1,23 +1,292 @@
 [
     {
-        "name": "Justin's Burgers",
+        "address": "123 Main St",
+        "created_at": "2026-06-14 20:35:49",
         "cuisine_type": "American",
-        "address": "123 Main Street",
-        "rating": 4.5,
-        "is_open_now": true
+        "id": 1,
+        "is_open_now": 1,
+        "name": "The Burger Joint",
+        "phone_number": "555-0199",
+        "rating": 4.5
     },
     {
-        "name": "Pizza Planet",
-        "cuisine_type": "Italian",
-        "address": "456 Space Way",
-        "rating": 4.2,
-        "is_open_now": false
-    },
-    {
-        "name": "Taco Town",
+        "address": "789 Oak Ave",
+        "created_at": "2026-06-14 20:35:49",
         "cuisine_type": "Mexican",
-        "address": "789 Fiesta Blvd",
-        "rating": 4.8,
-        "is_open_now": true
+        "id": 2,
+        "is_open_now": 1,
+        "name": "Taco Oasis",
+        "phone_number": "555-0244",
+        "rating": 4.8
+    },
+    {
+        "address": "456 Maple Rd",
+        "created_at": "2026-06-14 20:35:49",
+        "cuisine_type": "Italian",
+        "id": 3,
+        "is_open_now": 0,
+        "name": "Pasta Palace",
+        "phone_number": "555-0311",
+        "rating": 3.9
+    },
+    {
+        "address": "123 Main St",
+        "created_at": "2026-06-14 20:35:53",
+        "cuisine_type": "American",
+        "id": 4,
+        "is_open_now": 1,
+        "name": "The Burger Joint",
+        "phone_number": "555-0199",
+        "rating": 4.5
+    },
+    {
+        "address": "789 Oak Ave",
+        "created_at": "2026-06-14 20:35:53",
+        "cuisine_type": "Mexican",
+        "id": 5,
+        "is_open_now": 1,
+        "name": "Taco Oasis",
+        "phone_number": "555-0244",
+        "rating": 4.8
+    },
+    {
+        "address": "456 Maple Rd",
+        "created_at": "2026-06-14 20:35:53",
+        "cuisine_type": "Italian",
+        "id": 6,
+        "is_open_now": 0,
+        "name": "Pasta Palace",
+        "phone_number": "555-0311",
+        "rating": 3.9
+    },
+    {
+        "address": "123 Main St",
+        "created_at": "2026-06-14 20:37:30",
+        "cuisine_type": "American",
+        "id": 7,
+        "is_open_now": 1,
+        "name": "The Burger Joint",
+        "phone_number": "555-0199",
+        "rating": 4.5
+    },
+    {
+        "address": "789 Oak Ave",
+        "created_at": "2026-06-14 20:37:30",
+        "cuisine_type": "Mexican",
+        "id": 8,
+        "is_open_now": 1,
+        "name": "Taco Oasis",
+        "phone_number": "555-0244",
+        "rating": 4.8
+    },
+    {
+        "address": "456 Maple Rd",
+        "created_at": "2026-06-14 20:37:30",
+        "cuisine_type": "Italian",
+        "id": 9,
+        "is_open_now": 0,
+        "name": "Pasta Palace",
+        "phone_number": "555-0311",
+        "rating": 3.9
+    },
+    {
+        "address": "502 Cherry Ln",
+        "created_at": "2026-06-14 20:37:30",
+        "cuisine_type": "Japanese",
+        "id": 10,
+        "is_open_now": 1,
+        "name": "Sushi Sakura",
+        "phone_number": "555-0412",
+        "rating": 4.9
+    },
+    {
+        "address": "888 Fortune Way",
+        "created_at": "2026-06-14 20:37:30",
+        "cuisine_type": "Chinese",
+        "id": 11,
+        "is_open_now": 1,
+        "name": "Golden Dragon",
+        "phone_number": "555-0588",
+        "rating": 4.2
+    },
+    {
+        "address": "14 Rue de Market",
+        "created_at": "2026-06-14 20:37:30",
+        "cuisine_type": "French",
+        "id": 12,
+        "is_open_now": 0,
+        "name": "Le Bistro",
+        "phone_number": "555-0611",
+        "rating": 4.6
+    },
+    {
+        "address": "321 Spice Blvd",
+        "created_at": "2026-06-14 20:37:30",
+        "cuisine_type": "Indian",
+        "id": 13,
+        "is_open_now": 1,
+        "name": "Curry House",
+        "phone_number": "555-0745",
+        "rating": 4.7
+    },
+    {
+        "address": "901 Sprout St",
+        "created_at": "2026-06-14 20:37:30",
+        "cuisine_type": "Healthy",
+        "id": 14,
+        "is_open_now": 1,
+        "name": "Green Garden Salad",
+        "phone_number": "555-0822",
+        "rating": 4.0
+    },
+    {
+        "address": "711 Napoli Dr",
+        "created_at": "2026-06-14 20:37:30",
+        "cuisine_type": "Italian",
+        "id": 15,
+        "is_open_now": 1,
+        "name": "Bella Vista Pizzeria",
+        "phone_number": "555-0955",
+        "rating": 4.4
+    },
+    {
+        "address": "101 Caffeine Way",
+        "created_at": "2026-06-14 20:37:30",
+        "cuisine_type": "Cafe",
+        "id": 16,
+        "is_open_now": 1,
+        "name": "The Daily Grind",
+        "phone_number": "555-1023",
+        "rating": 4.3
+    },
+    {
+        "address": "654 Smokehouse Rd",
+        "created_at": "2026-06-14 20:37:30",
+        "cuisine_type": "BBQ",
+        "id": 17,
+        "is_open_now": 0,
+        "name": "Fuego Grill",
+        "phone_number": "555-1177",
+        "rating": 4.5
+    },
+    {
+        "address": "234 Noodle Row",
+        "created_at": "2026-06-14 20:37:30",
+        "cuisine_type": "Vietnamese",
+        "id": 18,
+        "is_open_now": 1,
+        "name": "Phở King",
+        "phone_number": "555-1289",
+        "rating": 4.8
+    },
+    {
+        "address": "12 Sweet St",
+        "created_at": "2026-06-14 20:37:30",
+        "cuisine_type": "Bakery",
+        "id": 19,
+        "is_open_now": 1,
+        "name": "Corner Bakery",
+        "phone_number": "555-1344",
+        "rating": 4.1
+    },
+    {
+        "address": "502 Cherry Ln",
+        "created_at": "2026-06-14 20:38:06",
+        "cuisine_type": "Japanese",
+        "id": 20,
+        "is_open_now": 1,
+        "name": "Sushi Sakura",
+        "phone_number": "555-0412",
+        "rating": 4.9
+    },
+    {
+        "address": "888 Fortune Way",
+        "created_at": "2026-06-14 20:38:06",
+        "cuisine_type": "Chinese",
+        "id": 21,
+        "is_open_now": 1,
+        "name": "Golden Dragon",
+        "phone_number": "555-0588",
+        "rating": 4.2
+    },
+    {
+        "address": "14 Rue de Market",
+        "created_at": "2026-06-14 20:38:06",
+        "cuisine_type": "French",
+        "id": 22,
+        "is_open_now": 0,
+        "name": "Le Bistro",
+        "phone_number": "555-0611",
+        "rating": 4.6
+    },
+    {
+        "address": "321 Spice Blvd",
+        "created_at": "2026-06-14 20:38:06",
+        "cuisine_type": "Indian",
+        "id": 23,
+        "is_open_now": 1,
+        "name": "Curry House",
+        "phone_number": "555-0745",
+        "rating": 4.7
+    },
+    {
+        "address": "901 Sprout St",
+        "created_at": "2026-06-14 20:38:06",
+        "cuisine_type": "Healthy",
+        "id": 24,
+        "is_open_now": 1,
+        "name": "Green Garden Salad",
+        "phone_number": "555-0822",
+        "rating": 4.0
+    },
+    {
+        "address": "711 Napoli Dr",
+        "created_at": "2026-06-14 20:38:06",
+        "cuisine_type": "Italian",
+        "id": 25,
+        "is_open_now": 1,
+        "name": "Bella Vista Pizzeria",
+        "phone_number": "555-0955",
+        "rating": 4.4
+    },
+    {
+        "address": "101 Caffeine Way",
+        "created_at": "2026-06-14 20:38:06",
+        "cuisine_type": "Cafe",
+        "id": 26,
+        "is_open_now": 1,
+        "name": "The Daily Grind",
+        "phone_number": "555-1023",
+        "rating": 4.3
+    },
+    {
+        "address": "654 Smokehouse Rd",
+        "created_at": "2026-06-14 20:38:06",
+        "cuisine_type": "BBQ",
+        "id": 27,
+        "is_open_now": 0,
+        "name": "Fuego Grill",
+        "phone_number": "555-1177",
+        "rating": 4.5
+    },
+    {
+        "address": "234 Noodle Row",
+        "created_at": "2026-06-14 20:38:06",
+        "cuisine_type": "Vietnamese",
+        "id": 28,
+        "is_open_now": 1,
+        "name": "Phở King",
+        "phone_number": "555-1289",
+        "rating": 4.8
+    },
+    {
+        "address": "12 Sweet St",
+        "created_at": "2026-06-14 20:38:06",
+        "cuisine_type": "Bakery",
+        "id": 29,
+        "is_open_now": 1,
+        "name": "Corner Bakery",
+        "phone_number": "555-1344",
+        "rating": 4.1
     }
 ]
