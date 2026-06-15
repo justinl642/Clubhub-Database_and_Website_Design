@@ -472,25 +472,4 @@ div:empty,
     border: none !important;
 }
 
-div:empty,
-.restaurant-card:empty,
-.content-box:empty,
-.announcements-box:empty {
-    display: none !important;
-    visibility: hidden !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: none !important;
-}
-.author-box {
-    background-color: #abc4ff !important; /* Soft pastel blue background to match your sidebar accent */
-    color: #1e293b !important;            /* Dark text color so it remains highly readable */
-    border: 2px solid #7ba2ff !important;  /* A slightly darker blue outline border */
-    border-radius: 6px !important;         /* Smoothly rounds the corners of the box container */
-    padding: 12px 20px !important;         /* Gives the text breathing room on top, bottom, and sides */
-    margin: 15px auto !important;          /* Adds clean margins above and below the box framework */
-    text-align: center !important;         /* Centers the text perfectly within its borders */
-    font-weight: bold !important;          /* Makes the names stand out boldly */
-    width: fit-content !important;         /* Forces the box to shrink to the size of the text */
-}
+
