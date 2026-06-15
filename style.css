@@ -318,28 +318,21 @@ select {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-/* 1. Force the layout block to fit inside your existing white main content section wrapper */
 #restaurant-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Horizontally centers all the individual cards inside the white area */
-    align-items: flex-start;  
-    width: 100%;             /* Fits perfectly inside the width bounds of your white main content wrapper */
-    max-width: 100%;         /* Restricts the layout from overflowing past the white borders */
-    box-sizing: border-box;  
-    gap: 20px;               /* Leaves clean spacing between each generated card element */
-    padding: 25px 15px;      /* Adds breathing room padding inside the white frame layout boundaries */
-    margin: 0 auto;          /* Centers the container element track within your section boundaries */
+    flex-wrap: wrap;         
+    justify-content: center;   
+    gap: 20px;               
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* 2. Responsive adjustment for your dynamic high-school restaurant card boxes */
 .restaurant-card {
     background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;      /* Adds a soft, modern curve layout style to the corner points */
-    padding: 18px;
-    width: 260px;            /* Fixes card widths so they wrap evenly inside the layout box constraints */
-    box-sizing: border-box;
-    text-align: left;        /* Ensures content alignment inside individual cards remains highly readable */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Gives a subtle depth drop-shadow against the white frame */
+    border: 1px solid #dddddd;
+    border-radius: 8px;
+    padding: 15px;
+    width: 250px;            
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
