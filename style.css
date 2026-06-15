@@ -317,24 +317,36 @@ select {
   .nav {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-}
 #restaurant-container {
+    /* 1. Reset standard layout flow constraints */
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: center !important;
     gap: 20px !important;
     padding: 20px !important;
     
-    
+    /* 2. Break away from the sidebar block alignment rules */
     position: relative !important;
     float: none !important;
     clear: both !important;
     
-    
+    /* 3. Force alignment to fill the parent container boundaries */
     width: 100% !important; 
+    max-width: 100% !important;
     box-sizing: border-box !important;
     margin: 20px auto 0 auto !important;
 }
+
+.restaurant-card {
+    background-color: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 8px !important;
+    padding: 15px !important;
+    width: 250px !important; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+    box-sizing: border-box !important;
+}
+
 
 
 .restaurant-card {
