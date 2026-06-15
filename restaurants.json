@@ -1,0 +1,23 @@
+[
+    {
+        "name": "Justin's Burgers",
+        "cuisine_type": "American",
+        "address": "123 Main Street",
+        "rating": 4.5,
+        "is_open_now": true
+    },
+    {
+        "name": "Pizza Planet",
+        "cuisine_type": "Italian",
+        "address": "456 Space Way",
+        "rating": 4.2,
+        "is_open_now": false
+    },
+    {
+        "name": "Taco Town",
+        "cuisine_type": "Mexican",
+        "address": "789 Fiesta Blvd",
+        "rating": 4.8,
+        "is_open_now": true
+    }
+]
