@@ -378,3 +378,34 @@ select {
     width: 250px;            
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
+
+#restaurant-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important; /* Forces side-by-side card lines */
+    gap: 20px !important;
+    padding: 30px 20px !important;
+    
+    
+    position: relative !important;
+    float: none !important;
+    clear: both !important;
+    
+   
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    margin: 20px 0 0 0 !important;
+}
+
+
+.restaurant-card {
+    background-color: #ffffff !important;
+    border: 1px solid #e2e8f0 !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+    width: 250px !important; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05) !important;
+    box-sizing: border-box !important;
+}
+
