@@ -30,26 +30,18 @@ class Main {
 String usersSQL = "SELECT * FROM users";
 server.createContext("/users", new RouteHandler(db, usersSQL));
 
-// Memberships
-String membershipsSQL = "SELECT * FROM memberships";
-server.createContext("/memberships", new RouteHandler(db, membershipsSQL));
 
-// Restaurants
+
+
 String restaurantsSQL = "SELECT * FROM restaurants";
 server.createContext("/restaurants", new RouteHandler(db, restaurantsSQL));
 
-// Promotions
-String promotionsSQL = "SELECT * FROM promotions";
-server.createContext("/promotions", new RouteHandler(db, promotionsSQL));
 
-// Announcements
-String announcementsSQL = "SELECT * FROM announcements";
-server.createContext("/announcements", new RouteHandler(db, announcementsSQL));
 
-// Analysis
-String analysisSQL =
-    "SELECT category, member_count FROM restaurants";
-server.createContext("/analysis", new RouteHandler(db, analysisSQL));
+
+
+
+
     
     //Start the server
     server.start();
