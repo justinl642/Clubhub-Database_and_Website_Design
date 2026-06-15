@@ -1,5 +1,4 @@
 
-// 1. Fetch the static restaurant data from your folder
 fetch("./restaurants.json")
     .then(response => response.json())
     .then(restaurants => {
@@ -7,19 +6,16 @@ fetch("./restaurants.json")
         const container = document.getElementById("restaurant-container");
         const searchInput = document.getElementById("search-bar");
 
-        // 2. Build a clear function to generate card layouts dynamically
         function renderCards(filterText) {
             let allCardsHTML = "";
 
             for (let i = 0; i < restaurants.length; i++) {
                 let shop = restaurants[i];
                 
-                // Convert text parameters to lowercase to eliminate capitalization typos
                 let shopName = shop.name.toLowerCase();
                 let shopCuisine = shop.cuisine_type.toLowerCase();
                 let searchText = filterText.toLowerCase();
 
-                // Check if the query matches either the restaurant name OR the cuisine type
                 if (searchText === "" || shopName.includes(searchText) || shopCuisine.includes(searchText)) {
                     
                     let statusText = "Closed";
@@ -42,14 +38,14 @@ fetch("./restaurants.json")
                 }
             }
             
-            // Set the filtered card outputs to display inside our page div
+           
             container.innerHTML = allCardsHTML;
         }
 
-        // 3. Populate all cards immediately when loading up the page
+        
         renderCards("");
 
-        // 4. Update the card grid instantly as you type into the search bar
+        
         searchInput.addEventListener("input", (event) => {
             renderCards(event.target.value);
         });

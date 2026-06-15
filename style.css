@@ -460,3 +460,14 @@ hr {
     padding: 0 !important;
     border: none !important;
 }
+/* Hides any leftover empty container boxes on the page */
+div:empty, 
+.content-box:empty,
+.activity-box,
+.announcement-box {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
